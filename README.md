@@ -1,7 +1,8 @@
 # pythonscripts
-Repository for Python Scripts
+Repository for Python Scripts.
 
-##Deleting Buckets from S3.
+## Deleting Buckets from S3.
+
 `delete_s3_bucket_cli.py`
 
 This script calls an aws account (uses default credentials stored in .aws) to
