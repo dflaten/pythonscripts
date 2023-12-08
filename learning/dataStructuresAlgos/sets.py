@@ -25,3 +25,14 @@ b_set.remove("Something")
 
 print(a_set)
 print(b_set)
+
+set_1 = {0,1,2,3,4,5}
+set_1_but_more = {1,2,3,4,5,6,7}
+set_2 = {'a','b','c'}
+# You can preform set theory operations in Python from mathematics:
+# Union
+print(set_1.union(set_2))
+# Intersection
+print(set_1.intersection(set_1_but_more))
+# Difference
+print(set_1.difference(set_1_but_more))
