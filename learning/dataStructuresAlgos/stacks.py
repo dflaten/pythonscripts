@@ -27,10 +27,37 @@ stack.put("Third")
 
 print("Stack is full: ", stack.full())
 print("Size of stack: ", stack.qsize())
-print("Item on top of stack is: ", stack.peek())
 
 print("Removing elements from stack.")
 print(stack.get())
 print(stack.get())
 print(stack.get())
 print("Is stack empty?: ", stack.empty())
+
+'''
+How to determine if a string has all of its brackets opened and closed.
+'''
+
+my_string = "{asdlfkj{}lk[]sj()df}"
+
+
+def determineIfBracketsEven(a_string):
+    bracket_stack = LifoQueue()
+    for character in a_string:
+        if (character in "{(["):
+            bracket_stack.put(character)
+        if (character in "})]"):
+            top = bracket_stack.get()
+            if not isMatch(character, top):
+                return False
+    return bracket_stack.empty() 
+
+def isMatch(char1, char2):
+    if (char1 == '}'):
+        return char2 == '{'
+    if (char1 == ')'):
+        return char2 == '('
+    if (char1 == ']'):
+        return char2 == '['
+    
+print("Does my string: ", my_string, " have all opening and closing brackets? ", determineIfBracketsEven(my_string))
