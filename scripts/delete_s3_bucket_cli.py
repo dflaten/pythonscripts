@@ -37,7 +37,6 @@ with open('s3bucketlisttodelete.txt', mode = 'w') as results:
         print(line)
         results.write(line)
         results.write('\n')
-    results.close()
 
 print('\n')
 print("List of buckets to be deleted has been saved in \'s3bucketlisttodelete.txt\'. Please review.")
