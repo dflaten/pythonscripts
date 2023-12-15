@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 from itertools import count
 from itertools import islice
+from itertools import chain 
+from itertools import dropwhile
+from itertools import filterfalse
+
 '''
 Iterators must implement a _iter_ and _next_ method.
 
@@ -128,3 +132,58 @@ if __name__ == '__main__':
     # you have created 10 items.
     for i in islice(count(10), 10):
         print(i)
+    # Other methods are available like cycle which will
+    # allow you to continously cycle through a list of things.
+    # Repeat will return the same thing over and over again, similiar
+    # to a cycle but with just one item and only for as many times as you 
+    # pass into it.
+
+
+    '''
+    If you want to take a series of iterables and flatten them into one long
+    iterable you can use the chain method like so:
+    '''
+
+    first_list = ['one', 'two']
+    print('First List before combining: ', first_list)
+    numbers = list(range(7))
+    things = ['thing 1', 'thing 2']
+
+    first_list = list(chain(first_list, numbers, things))
+    print('First List after combining: ', first_list)
+    print('----------------')
+    '''
+    Dropwhile is used to filter out a set of records based on a condition:
+
+    This drops values until a value in the list doesn't meet the condition.
+    '''
+    print(list(dropwhile(lambda x: x < 3, [1,2,3,4,5,7,0])))
+
+    '''
+    filterfalse can be used to actually filter all elements that evaluate to false:
+    '''
+    def greater_than_five(x):
+        return x > 5 
+
+    print (list(filterfalse(greater_than_five, [6, 7, 8, 9, 1, 2, 3, 10, 1, 2])))
+    print('----------------')
+
+    '''
+    groupby is very useful for returning consecutive keys and groups from an iterable.
+    '''
+    from itertools import groupby
+
+    vehicles = [('Ford', 'Taurus'), ('Dodge', 'Durango'),
+                ('Chevrolet', 'Cobalt'), ('Ford', 'F150'),
+                ('Dodge', 'Charger'), ('Ford', 'GT')]
+
+    # If you don't sort the list before doing the group by method
+    # things will not work as expected. The method will not be
+    # able to group items correctly.
+    sorted_vehicles = sorted(vehicles)
+
+    for key, group in groupby(sorted_vehicles, lambda make: make[0]):
+        for make, model in group:
+            print('{model} is made by {make}'.format(model=model,
+                                                    make=make))
+        print ("**** END OF GROUP ***\n")
