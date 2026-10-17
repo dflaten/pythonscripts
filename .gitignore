@@ -1,4 +1,30 @@
+# Generated output from scripts
 /scripts/s3bucketlisttodelete.txt
 /scripts/s3bucketlist.json
 newfile.txt
 oldfile.txt
+
+# uv / Python
+.venv/
+.python-version.local
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Ruff cache
+.ruff_cache/
+
+# ty cache
+.ty_cache/
+.ty/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+venv/
